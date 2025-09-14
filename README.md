@@ -62,22 +62,36 @@ backend/
 Frontend Folder Structure
 ```
 frontend/
-├─ api/
-│  └─ index.js
-├─ components/
-│  ├─ TransactionList.jsx
-│  └─ VerifyButton.jsx
-├─ pages/
-│  ├─ Dashboard.jsx
-│  ├─ Departments.jsx
-│  ├─ DepartmentDetail.jsx
-│  └─ Projects.jsx
-├─ utils/
-│  └─ hash.js
-├─ styles/
-│  └─ global.css
-├─ App.js
-└─ index.js
+├── node_modules/
+├── public/
+├── src/
+│   ├── api/
+│   ├── Components/
+│   │   ├── Button/
+│   │   ├── Chart/
+│   │   ├── Dashboard/
+│   │   ├── Department/
+│   │   ├── Expenses/
+│   │   ├── Form/
+│   │   ├── Income/
+│   │   ├── IncomeItem/
+│   │   ├── Navigation/
+│   │   │   └── Navigation.jsx
+│   │   ├── Orb/
+│   │   ├── TransactionList.jsx
+│   │   └── VerifyButton.jsx
+│   ├── context/
+│   ├── History/
+│   ├── img/
+│   ├── services/
+│   ├── styles/
+│   ├── utils/
+│   ├── App.js
+│   └── index.js
+├── package.json
+├── package-lock.json
+├── README.md
+└── .gitignore
 ```
 
 🚀 Setup & Run
@@ -107,3 +121,5 @@ Trust: Tamper-proof transactions with verification
 Accessibility: Plain-English summaries for non-technical users
 
 Feasible MVP: Built with skills our team already has
+
+> Note: For simplicity, .env and node_modules/ are ignored in the folder structure since they are environment-specific and auto-generated.
