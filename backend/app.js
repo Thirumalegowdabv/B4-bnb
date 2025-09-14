@@ -1,27 +1,25 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-require('dotenv').config();
+const express = require('express')
+const cors = require('cors');
+const { db } = require('./db/db');
+const {readdirSync} = require('fs')
+const app = express()
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+require('dotenv').config()
 
-// Middleware
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT
 
-// Connect MongoDB
-mongoose.connect("mongodb://localhost:27017/fundflow", { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
+//middlewares
+app.use(express.json())
+app.use(cors())
 
-// Routes
+//routes
+readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
 
-app.use("/api/budgets", require("./routes/budget"));
-app.use("/api/departments", require("./routes/departments"));
-app.use("/api/projects", require("./routes/projects"));
-app.use("/api/vendors", require("./routes/vendors"));
-app.use("/api/transactions", require("./routes/transactions"));
+const server = () => {
+    db()
+    app.listen(PORT, () => {
+        console.log('listening to port:', PORT)
+    })
+}
 
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+server()
